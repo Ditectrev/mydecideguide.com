@@ -1,17 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>app</title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>app</title>
+  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+  <script src="//unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js"></script>
+  <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+  <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <div id="app">
+    <div v-if="firstView">
+      <h1>Welcome to: {{title}}</h1>
+      <p>
+        Text
+      </p>
+      <button @click="startTree">START!</button>
+    </div>
+
+    <!-- TODO: Question+1 won't work, because someone can go back, and then click "next". -->
+    <!-- TODO: Move tree logic to question1/2/3... slot. -->
+    <!-- TODO: Create separated component Tree.vue -->
+    <!-- TODO: Move goToQuestion, question, previousQuestion, nextQuestion etc. to JSON. -->
+    <!-- TODO: Make it more efficient after PoC. -->
+    <div v-if="questionView">
+      <div v-if="goToQuestion === 1">
+        <h1>Question 1</h1>
+        <h3>Do you have any debt?</h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer1" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer1" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+          </b-form-group>
+          <div v-if="answer1">
+            <button type="submit" v-on:click="nextQuestion1(); handleAnswer1();">Next</button>
+          </div>
+      </div>
+      <div v-if="goToQuestion === 2">
+        <h1>Question 2</h1>
+        <h3>Is the interest 8% or higher?</h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer2" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer2" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+        </b-form-radio-group>
+        <div v-if="answer2">
+          <button @click="previousQuestion2">Previous</button>
+          <button @click="nextQuestion2(); handleAnswer2();">Next</button>
+        </div>
+      </div>
+      <div v-if="goToQuestion === 3">
+        <h1>Question 3</h1>
+        <h3>Do you want help balancing debt and investing?</h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer3" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer3" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+        </b-form-radio-group>
+        <div v-if="answer3">
+          <button @click="previousQuestion3">Previous</button>
+          <button @click="nextQuestion3(); handleAnswer3();">Next</button>
+        </div>
+      </div>
+      <div v-if="goToQuestion === 4">
+        <h1>Question 4</h1>
+        <h3>Do you have an Emergency Fund?</h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer4" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer4" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+        </b-form-radio-group>
+        <div v-if="answer4">
+          <button @click="previousQuestion4">Previous</button>
+          <button @click="nextQuestion4(); handleAnswer4();">Next</button>
+        </div>
+      </div>
+      <div v-if="goToQuestion === 5">
+        <h1>Question 5</h1>
+        <h3>Do you want to pick your own investments?</h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer5" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer5" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+        </b-form-radio-group>
+        <div v-if="answer5">
+          <button @click="previousQuestion5">Previous</button>
+          <button @click="nextQuestion5(); handleAnswer5();">Next</button>
+        </div>
+      </div>
+      <div v-if="goToQuestion === 6">
+        <h1>Question 6</h1>
+        <h3>Do you want to use a online robo-advisor?</h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer6" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer6" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+        </b-form-radio-group>
+        <div v-if="answer6">
+          <button @click="previousQuestion6">Previous</button>
+          <button @click="nextQuestion6(); handleAnswer6();">Next</button>
+        </div>
+      </div>
+      <div v-if="goToQuestion === 7">
+        <h1>Question 7</h1>
+        <h3>Do you want a professional investment manager?</h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer7" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer7" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+        </b-form-radio-group>
+        <div v-if="answer7">
+          <button @click="previousQuestion7">Previous</button>
+          <button @click="nextQuestion7(); handleAnswer7();">Next</button>
+        </div>
+      </div>
+      <div v-if="goToQuestion === 8">
+        <h1>Question 8</h1>
+        <h3>Are you investing for retirement?</h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer8" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer8" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+        </b-form-radio-group>
+        <div v-if="answer8">
+          <button @click="previousQuestion8">Previous</button>
+          <button @click="nextQuestion8(); handleAnswer8();">Next</button>
+        </div>
+      </div>
+      <div v-if="goToQuestion === 9">
+        <h1>Question 9</h1>
+        <h3>Do you know your time horizon?</h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer9" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer9" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+        </b-form-radio-group>
+        <div v-if="answer9">
+          <button @click="previousQuestion9">Previous</button>
+          <button @click="nextQuestion9(); handleAnswer9();">Next</button>
+        </div>
+      </div>
+      <div v-if="goToQuestion === 10">
+        <h1>Question 10</h1>
+        <h3>Do you have funds available to start investing?</h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer10" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer10" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+        </b-form-radio-group>
+        <div v-if="answer10">
+          <button @click="previousQuestion10">Previous</button>
+          <button @click="nextQuestion10(); handleAnswer10();">Next</button>
+        </div>
+      </div>
+      <div v-if="goToQuestion === 11">
+        <h1>Question 11</h1>
+        <h3>Do you want to use an auto-saving app?</h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer11" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer11" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+        </b-form-radio-group>
+        <div v-if="answer11">
+          <button @click="previousQuestion11">Previous</button>
+          <button @click="nextQuestion11(); handleAnswer11();">Next</button>
+        </div>
+      </div>
+      <div v-if="goToQuestion === 12">
+        <h1>Question 12</h1> <h3>Do you want to invest in socially responsible investments and companies? </h3>
+            <b-form-radio-group label="Your answer" required buttons>
+              <b-form-radio button-variant="outline-primary" v-model="answer12" name="checkboxQuestion" value="Yes"
+                id="trueAnswer">Yes</b-form-radio>
+              <b-form-radio button-variant="outline-danger" v-model="answer12" name="checkboxQuestion" value="No"
+                id="falseAnswer">No</b-form-radio>
+            </b-form-radio-group>
+            <div v-if="answer12">
+              <button @click="previousQuestion12">Previous</button>
+              <button @click="handleResults();">Submit</button>
+            </div>
+      </div>
+    </div>
+
+    <div v-if="finalView">
+      End of the tree.
+      <hr>
+      <h2>Results:</h2>
+      <br>
+      Question1 {{ this.answers[0] }}
+      <br>
+      Question2 {{ this.answers[1] }}
+      <br>
+      Question3 {{ this.answers[2] }}
+      <br>
+      Question4 {{ this.answers[3] }}
+      <br>
+      Question5 {{ this.answers[4] }}
+      <br>
+      Question6 {{ this.answers[5] }}
+      <br>
+      Question7 {{ this.answers[6] }}
+      <br>
+      Question8 {{ this.answers[7] }}
+      <br>
+      Question9 {{ this.answers[8] }}
+      <br>
+      Question10 {{ this.answers[9] }}
+      <br>
+      Question11 {{ this.answers[10] }}
+      <br>
+      Question12 {{ this.answers[11] }}
+    </div>
+
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: function () {
+        return {
+          firstView: true,
+          questionView: false,
+          finalView: false,
+          title: 'MyDecisionTree',
+          answers: [],
+          answer1: '',
+          answer2: '',
+          answer3: '',
+          answer4: '',
+          answer5: '',
+          answer6: '',
+          answer7: '',
+          answer8: '',
+          answer9: '',
+          answer10: '',
+          answer11: '',
+          answer12: '',
+          goToQuestion: null
+        }
+      },
+      methods: {
+        startTree: function () {
+          this.firstView = false;
+          this.questionView = true;
+          this.goToQuestion = 1;
+        },
+        nextQuestion1: function () {
+          if (this.answer1 === 'Yes') {
+            this.goToQuestion = 2;
+          } else {
+            this.goToQuestion = 4;
+          }
+        },
+        previousQuestion2: function () {
+          this.goToQuestion = 1;
+        },
+        nextQuestion2: function () {
+          if (this.answer2 === 'Yes') {
+            this.goToQuestion = 3;
+          } else {
+            this.goToQuestion = 4;
+          }
+        },
+        previousQuestion3: function () {
+          if (this.answer1 === 'No') {
+            this.answer2 = '';
+            this.goToQuestion = 1;
+          } else {
+            this.goToQuestion = 2;
+          }
+        },
+        nextQuestion3: function () {
+          this.goToQuestion = 4;
+        },
+        previousQuestion4: function () {
+          if (this.answer1 === 'No') {
+            this.answer2 = '';
+            this.answer3 = '';
+            this.goToQuestion = 1;
+          } else if (this.answer2 === 'No') {
+            this.answer3 = '';
+            this.goToQuestion = 2;
+          } else {
+            this.goToQuestion = 3;
+          }
+        },
+        nextQuestion4: function () {
+          this.goToQuestion = 5;
+        },
+        previousQuestion5: function () {
+          this.goToQuestion = 4;
+        },
+        nextQuestion5: function () {
+          if (this.answer5 === 'Yes') {
+            this.goToQuestion = 9;
+          } else {
+            this.goToQuestion = 6;
+          }
+        },
+        previousQuestion6: function () {
+          this.goToQuestion = 5;
+        },
+        nextQuestion6: function () {
+          if (this.answer6 === 'Yes') {
+            this.goToQuestion = 8;
+          } else {
+            this.goToQuestion = 7;
+          }
+        },
+        previousQuestion7: function () {
+          this.goToQuestion = 6;
+        },
+        nextQuestion7: function () {
+          if (this.answer7 === 'Yes') {
+            this.goToQuestion = 8;
+          } else {
+            this.goToQuestion = 4;
+          }
+        },
+        previousQuestion8: function () {
+          if (this.answer6 === 'Yes') {
+            this.answer7 = '';
+            this.goToQuestion = 6;
+          } else {
+            this.goToQuestion = 7;
+          }
+        },
+        nextQuestion8: function () {
+          if (this.answer8 === 'Yes') {
+            this.goToQuestion = 10;
+          } else {
+            this.goToQuestion = 9;
+          }
+        },
+        previousQuestion9: function () {
+          if (this.answer5 === 'Yes') {
+            this.answer6 = '';
+            this.answer7 = '';
+            this.answer8 = '';
+            this.goToQuestion = 5;
+          } else {
+            this.goToQuestion = 8;
+          }
+        },
+        nextQuestion9: function () {
+          this.goToQuestion = 10;
+        },
+        previousQuestion10: function () {
+          if (this.answer8 === 'Yes') {
+            this.answer9 = '';
+            this.goToQuestion = 8;
+          } else {
+            this.goToQuestion = 9;
+          }
+        },
+        nextQuestion10: function () {
+          if (this.answer10 === 'Yes') {
+            this.goToQuestion = 12;
+          } else {
+            this.goToQuestion = 11;
+          }
+        },
+        previousQuestion11: function () {
+          this.goToQuestion = 10;
+        },
+        nextQuestion11: function () {
+          this.goToQuestion = 12;
+        },
+        previousQuestion12: function () {
+          if (this.answer10 === 'Yes') {
+            this.answer11 = '';
+            this.goToQuestion = 10;
+          } else {
+            this.goToQuestion = 11;
+          }
+        },
+        handleAnswer1: function () {
+          this.answers[0] = this.answer1;
+          console.log('answer event: ', this.answer1);
+        },
+        handleAnswer2: function () {
+          this.answers[1] = this.answer2;
+          console.log('answer event: ', this.answer2);
+        },
+        handleAnswer3: function () {
+          this.answers[2] = this.answer3;
+          console.log('answer event: ', this.answer3);
+        },
+        handleAnswer4: function () {
+          this.answers[3] = this.answer4;
+          console.log('answer event: ', this.answer4);
+        },
+        handleAnswer5: function () {
+          this.answers[4] = this.answer5;
+          console.log('answer event: ', this.answer5);
+        },
+        handleAnswer6: function () {
+          this.answers[5] = this.answer6;
+          console.log('answer event: ', this.answer6);
+        },
+        handleAnswer7: function () {
+          this.answers[6] = this.answer7;
+          console.log('answer event: ', this.answer7);
+        },
+        handleAnswer8: function () {
+          this.answers[7] = this.answer8;
+          console.log('answer event: ', this.answer8);
+        },
+        handleAnswer9: function () {
+          this.answers[8] = this.answer9;
+          console.log('answer event: ', this.answer9);
+        },
+        handleAnswer10: function () {
+          this.answers[9] = this.answer10;
+          console.log('answer event: ', this.answer10);
+        },
+        handleAnswer11: function () {
+          this.answers[10] = this.answer11;
+          console.log('answer event: ', this.answer11);
+        },
+        handleResults: function () {
+          this.questionView = false;
+          this.finalView = true;
+          // this.question = 12;
+          this.answers[11] = this.answer12;
+          console.log('answer event: ', this.answer12);
+          console.log('handle results, maybe just print the data, then send it');
+          // alert(this.answers[0]);
+          // alert(this.answers[1]);
+          // alert(this.answers[2]);
+          this.answers.forEach((a, index) => {
+            alert('Question ' + (index + 1) + ': ' + '\nAnswer: ' + this.answers[index]);
+          })
+        }
+      }
+    })
+  </script>
+</body>
+
 </html>
