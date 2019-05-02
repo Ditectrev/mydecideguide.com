@@ -13,6 +13,27 @@
   <script src="//unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js"></script>
   <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
   <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+  <style>
+    .questionView,
+    .btn-group-toggle.btn-group,
+    button {
+      display: flex;
+      justify-content: center;
+    }
+
+    h1,
+    h3,
+    p {
+      text-align: center;
+    }
+
+    .buttonContainer {
+      display: flex;
+      font-size: 24px;
+      justify-content: space-around;
+      margin: 40px auto;
+    }
+  </style>
 </head>
 
 <body>
@@ -25,7 +46,9 @@
       <p>
         Text
       </p>
-      <button @click="startTree">START!</button>
+      <div class="buttonContainer">
+        <b-button size="lg" variant="success" @click="startTree">START!</b-button>
+      </div>
     </div>
 
     <!-- TODO: Question+1 won't work, because someone can go back, and then click "next". -->
@@ -33,7 +56,7 @@
     <!-- TODO: Create separated component Tree.vue -->
     <!-- TODO: Move goToQuestion, question, previousQuestion, nextQuestion etc. to JSON. -->
     <!-- TODO: Make it more efficient after PoC. -->
-    <div v-if="questionView">
+    <div v-if="questionView" class="questionView">
       <div v-if="goToQuestion === 1">
         <h1>Question 1</h1>
         <h3>Do you have any debt?</h3>
@@ -42,10 +65,11 @@
             id="trueAnswer">Yes</b-form-radio>
           <b-form-radio button-variant="outline-danger" v-model="answer1" name="checkboxQuestion" value="No"
             id="falseAnswer">No</b-form-radio>
-          </b-form-group>
-          <div v-if="answer1">
-            <button type="submit" v-on:click="nextQuestion1(); handleAnswer1();">Next</button>
-          </div>
+        </b-form-radio-group>
+        <div v-if="answer1" class="buttonContainer">
+          <b-button variant="dark" v-on:click="nextQuestion1(); handleAnswer1();">Next
+          </b-button>
+        </div>
       </div>
       <div v-if="goToQuestion === 2">
         <h1>Question 2</h1>
@@ -56,9 +80,9 @@
           <b-form-radio button-variant="outline-danger" v-model="answer2" name="checkboxQuestion" value="No"
             id="falseAnswer">No</b-form-radio>
         </b-form-radio-group>
-        <div v-if="answer2">
-          <button @click="previousQuestion2">Previous</button>
-          <button @click="nextQuestion2(); handleAnswer2();">Next</button>
+        <div v-if="answer2" class="buttonContainer">
+          <b-button variant="dark" @click="previousQuestion2">Previous</b-button>
+          <b-button variant="dark" @click="nextQuestion2(); handleAnswer2();">Next</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 3">
@@ -70,9 +94,9 @@
           <b-form-radio button-variant="outline-danger" v-model="answer3" name="checkboxQuestion" value="No"
             id="falseAnswer">No</b-form-radio>
         </b-form-radio-group>
-        <div v-if="answer3">
-          <button @click="previousQuestion3">Previous</button>
-          <button @click="nextQuestion3(); handleAnswer3();">Next</button>
+        <div v-if="answer3" class="buttonContainer">
+          <b-button variant="dark" @click="previousQuestion3">Previous</b-button>
+          <b-button variant="dark" @click="nextQuestion3(); handleAnswer3();">Next</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 4">
@@ -84,9 +108,9 @@
           <b-form-radio button-variant="outline-danger" v-model="answer4" name="checkboxQuestion" value="No"
             id="falseAnswer">No</b-form-radio>
         </b-form-radio-group>
-        <div v-if="answer4">
-          <button @click="previousQuestion4">Previous</button>
-          <button @click="nextQuestion4(); handleAnswer4();">Next</button>
+        <div v-if="answer4" class="buttonContainer">
+          <b-button variant="dark" @click="previousQuestion4">Previous</b-button>
+          <b-button variant="dark" @click="nextQuestion4(); handleAnswer4();">Next</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 5">
@@ -98,23 +122,23 @@
           <b-form-radio button-variant="outline-danger" v-model="answer5" name="checkboxQuestion" value="No"
             id="falseAnswer">No</b-form-radio>
         </b-form-radio-group>
-        <div v-if="answer5">
-          <button @click="previousQuestion5">Previous</button>
-          <button @click="nextQuestion5(); handleAnswer5();">Next</button>
+        <div v-if="answer5" class="buttonContainer">
+          <b-button variant="dark" @click="previousQuestion5">Previous</b-button>
+          <b-button variant="dark" @click="nextQuestion5(); handleAnswer5();">Next</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 6">
         <h1>Question 6</h1>
-        <h3>Do you want to use a online robo-advisor?</h3>
+        <h3>Do you want to use a online digital advisor?</h3>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer6" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
           <b-form-radio button-variant="outline-danger" v-model="answer6" name="checkboxQuestion" value="No"
             id="falseAnswer">No</b-form-radio>
         </b-form-radio-group>
-        <div v-if="answer6">
-          <button @click="previousQuestion6">Previous</button>
-          <button @click="nextQuestion6(); handleAnswer6();">Next</button>
+        <div v-if="answer6" class="buttonContainer">
+          <b-button variant="dark" @click="previousQuestion6">Previous</b-button>
+          <b-button variant="dark" @click="nextQuestion6(); handleAnswer6();">Next</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 7">
@@ -126,9 +150,9 @@
           <b-form-radio button-variant="outline-danger" v-model="answer7" name="checkboxQuestion" value="No"
             id="falseAnswer">No</b-form-radio>
         </b-form-radio-group>
-        <div v-if="answer7">
-          <button @click="previousQuestion7">Previous</button>
-          <button @click="nextQuestion7(); handleAnswer7();">Next</button>
+        <div v-if="answer7" class="buttonContainer">
+          <b-button variant="dark" @click="previousQuestion7">Previous</b-button>
+          <b-button variant="dark" @click="nextQuestion7(); handleAnswer7();">Next</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 8">
@@ -140,9 +164,9 @@
           <b-form-radio button-variant="outline-danger" v-model="answer8" name="checkboxQuestion" value="No"
             id="falseAnswer">No</b-form-radio>
         </b-form-radio-group>
-        <div v-if="answer8">
-          <button @click="previousQuestion8">Previous</button>
-          <button @click="nextQuestion8(); handleAnswer8();">Next</button>
+        <div v-if="answer8" class="buttonContainer">
+          <b-button variant="dark" @click="previousQuestion8">Previous</b-button>
+          <b-button variant="dark" @click="nextQuestion8(); handleAnswer8();">Next</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 9">
@@ -154,9 +178,9 @@
           <b-form-radio button-variant="outline-danger" v-model="answer9" name="checkboxQuestion" value="No"
             id="falseAnswer">No</b-form-radio>
         </b-form-radio-group>
-        <div v-if="answer9">
-          <button @click="previousQuestion9">Previous</button>
-          <button @click="nextQuestion9(); handleAnswer9();">Next</button>
+        <div v-if="answer9" class="buttonContainer">
+          <b-button variant="dark" @click="previousQuestion9">Previous</b-button>
+          <b-button variant="dark" @click="nextQuestion9(); handleAnswer9();">Next</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 10">
@@ -168,9 +192,9 @@
           <b-form-radio button-variant="outline-danger" v-model="answer10" name="checkboxQuestion" value="No"
             id="falseAnswer">No</b-form-radio>
         </b-form-radio-group>
-        <div v-if="answer10">
-          <button @click="previousQuestion10">Previous</button>
-          <button @click="nextQuestion10(); handleAnswer10();">Next</button>
+        <div v-if="answer10" class="buttonContainer">
+          <b-button variant="dark" @click="previousQuestion10">Previous</b-button>
+          <b-button variant="dark" @click="nextQuestion10(); handleAnswer10();">Next</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 11">
@@ -182,23 +206,24 @@
           <b-form-radio button-variant="outline-danger" v-model="answer11" name="checkboxQuestion" value="No"
             id="falseAnswer">No</b-form-radio>
         </b-form-radio-group>
-        <div v-if="answer11">
-          <button @click="previousQuestion11">Previous</button>
-          <button @click="nextQuestion11(); handleAnswer11();">Next</button>
+        <div v-if="answer11" class="buttonContainer">
+          <b-button variant="dark" @click="previousQuestion11">Previous</b-button>
+          <b-button variant="dark" @click="nextQuestion11(); handleAnswer11();">Next</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 12">
-        <h1>Question 12</h1> <h3>Do you want to invest in socially responsible investments and companies? </h3>
-            <b-form-radio-group label="Your answer" required buttons>
-              <b-form-radio button-variant="outline-primary" v-model="answer12" name="checkboxQuestion" value="Yes"
-                id="trueAnswer">Yes</b-form-radio>
-              <b-form-radio button-variant="outline-danger" v-model="answer12" name="checkboxQuestion" value="No"
-                id="falseAnswer">No</b-form-radio>
-            </b-form-radio-group>
-            <div v-if="answer12">
-              <button @click="previousQuestion12">Previous</button>
-              <button @click="handleResults();">Submit</button>
-            </div>
+        <h1>Question 12</h1>
+        <h3>Do you want to invest in socially responsible investments and companies? </h3>
+        <b-form-radio-group label="Your answer" required buttons>
+          <b-form-radio button-variant="outline-primary" v-model="answer12" name="checkboxQuestion" value="Yes"
+            id="trueAnswer">Yes</b-form-radio>
+          <b-form-radio button-variant="outline-danger" v-model="answer12" name="checkboxQuestion" value="No"
+            id="falseAnswer">No</b-form-radio>
+        </b-form-radio-group>
+        <div v-if="answer12" class="buttonContainer">
+          <b-button variant="dark" @click="previousQuestion12">Previous</b-button>
+          <b-button variant="dark" @click="handleResults();">Submit</b-button>
+        </div>
       </div>
     </div>
 
