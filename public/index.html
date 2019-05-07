@@ -13,6 +13,7 @@
   <script src="//unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js"></script>
   <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
   <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+  <script src="https://cdn.rawgit.com/officert/vue-slideout-panel/a07d8e2e/dist/vue2-slideout-panel.min.js"></script>
   <style>
     .questionView,
     .btn-group-toggle.btn-group,
@@ -91,6 +92,10 @@
       animation-delay: -7s;
     }
 
+    .panel-1 {
+      padding: 20px;
+    }
+
     @keyframes clipMe {
 
       0%,
@@ -123,6 +128,10 @@
       <div class="buttonContainer">
         <b-button size="lg" variant="success" @click="startTree">START!</b-button>
       </div>
+      <button class="btn btn-primary" v-on:click.prevent="showPanel">
+        Show Panel
+      </button>
+      <slideout-panel></slideout-panel>
     </div>
 
     <!-- TODO: Question+1 won't work, because someone can go back, and then click "next". -->
@@ -132,8 +141,8 @@
     <!-- TODO: Make it more efficient after PoC. -->
     <div v-if="questionView" class="questionView">
       <div v-if="goToQuestion === 1">
-          <h1>Question 1</h1>
-          <h3>Do you have any debt?</h3>
+        <h1>Question 1</h1>
+        <h3>Do you have any debt?</h3>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer1" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -354,7 +363,11 @@
           answer10: '',
           answer11: '',
           answer12: '',
-          goToQuestion: null
+          goToQuestion: null,
+          panel1Form: {
+            openOn: "right",
+            width: "500px" // TODO: try somehow to make it 50%, issue #37.
+          }
         }
       },
       methods: {
@@ -550,9 +563,36 @@
           this.answers.forEach((a, index) => {
             alert('Question ' + (index + 1) + ': ' + '\nAnswer: ' + this.answers[index]);
           })
+        },
+        showPanel() {
+          const panel = this.$showPanel({
+            component: "panel-1",
+            cssClass: "panel-1",
+            width: this.panel1Form.width,
+            props: {}
+          });
         }
       }
-    })
+    });
+
+    Vue.component("panel-1", {
+      name: "panel-1",
+      template: `
+<div>
+<button class="btn btn-primary" v-on:click.prevent="closePanel">
+Close Panel
+</button>
+</div>
+`,
+      data() {
+        return {};
+      },
+      methods: {
+        closePanel() {
+          this.$emit("closePanel", {});
+        }
+      }
+    });
   </script>
 </body>
 
