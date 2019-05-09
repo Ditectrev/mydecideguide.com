@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- TODO: Unify " or '. -->
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -94,6 +96,14 @@
 
     .panel-1 {
       padding: 20px;
+      text-align: justify;
+    }
+
+    .panelContainer {
+      align-items: center;
+      display: flex;
+      position: absolute;
+      right: 150px;
     }
 
     @keyframes clipMe {
@@ -128,10 +138,6 @@
       <div class="buttonContainer">
         <b-button size="lg" variant="success" @click="startTree">START!</b-button>
       </div>
-      <button class="btn btn-primary" v-on:click.prevent="showPanel">
-        Show Panel
-      </button>
-      <slideout-panel></slideout-panel>
     </div>
 
     <!-- TODO: Question+1 won't work, because someone can go back, and then click "next". -->
@@ -143,6 +149,12 @@
       <div v-if="goToQuestion === 1">
         <h1>Question 1</h1>
         <h3>Do you have any debt?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer1" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -157,6 +169,12 @@
       <div v-if="goToQuestion === 2">
         <h1>Question 2</h1>
         <h3>Is the interest 8% or higher?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer2" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -171,6 +189,12 @@
       <div v-if="goToQuestion === 3">
         <h1>Question 3</h1>
         <h3>Do you want help balancing debt and investing?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer3" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -185,6 +209,12 @@
       <div v-if="goToQuestion === 4">
         <h1>Question 4</h1>
         <h3>Do you have an Emergency Fund?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer4" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -199,6 +229,12 @@
       <div v-if="goToQuestion === 5">
         <h1>Question 5</h1>
         <h3>Do you want to pick your own investments?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer5" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -213,6 +249,12 @@
       <div v-if="goToQuestion === 6">
         <h1>Question 6</h1>
         <h3>Do you want to use a online digital advisor?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer6" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -227,6 +269,12 @@
       <div v-if="goToQuestion === 7">
         <h1>Question 7</h1>
         <h3>Do you want a professional investment manager?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer7" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -241,6 +289,12 @@
       <div v-if="goToQuestion === 8">
         <h1>Question 8</h1>
         <h3>Are you investing for retirement?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer8" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -255,6 +309,12 @@
       <div v-if="goToQuestion === 9">
         <h1>Question 9</h1>
         <h3>Do you know your time horizon?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer9" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -269,6 +329,12 @@
       <div v-if="goToQuestion === 10">
         <h1>Question 10</h1>
         <h3>Do you have funds available to start investing?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer10" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -283,6 +349,12 @@
       <div v-if="goToQuestion === 11">
         <h1>Question 11</h1>
         <h3>Do you want to use an auto-saving app?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer11" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -296,7 +368,13 @@
       </div>
       <div v-if="goToQuestion === 12">
         <h1>Question 12</h1>
-        <h3>Do you want to invest in socially responsible investments and companies? </h3>
+        <h3>Do you want to invest in socially responsible investments and companies?</h3>
+        <div class="panelContainer">
+          <button class="btn btn-primary" v-on:click="showPanel()">
+            Show Information
+          </button>
+        </div>
+        <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
           <b-form-radio button-variant="outline-primary" v-model="answer12" name="checkboxQuestion" value="Yes"
             id="trueAnswer">Yes</b-form-radio>
@@ -575,8 +653,8 @@
       }
     });
 
-    Vue.component("panel-1", {
-      name: "panel-1",
+    Vue.component('panel-1', {
+      name: 'panel-1',
       template: `<div>
 <h2>
 Question
