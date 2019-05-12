@@ -32,6 +32,7 @@
     h1,
     h2,
     h3,
+    h6,
     p {
       color: #424242;
       text-align: center;
@@ -127,6 +128,16 @@
       justify-content: center;
     }
 
+    .previousAnswers {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      left: 10px;
+      position: absolute;
+      top: 10px;
+    }
+
     @keyframes clipMe {
 
       0%,
@@ -197,6 +208,10 @@
       <div v-if="goToQuestion === 2">
         <h1>How do I invest?</h1>
         <h3>Is the interest 8% or higher?</h3>
+        <div class="previousAnswers">
+          <h3>Your answers</h3>
+          <h6 v-if="answer1">Do you have any debt? <strong><br>Answer: {{ answer1 }}</strong></h6>
+        </div>
         <div class="centerx">
           <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
           <vs-popup class="holamundo" title="What is interest?" :active.sync="popupActivo">
@@ -224,6 +239,11 @@
       <div v-if="goToQuestion === 3">
         <h1>How do I invest?</h1>
         <h3>Do you want help balancing debt and investing?</h3>
+        <div class="previousAnswers">
+          <h3>Your answers</h3>
+          <h6 v-if="answer1">Do you have any debt? <strong><br>Answer: {{answer1}}</strong></h6>
+          <h6 v-if="answer2">Is the interest 8% or higher? <strong><br>Answer: {{answer2}}</strong></h6>
+        </div>
         <div class="centerx">
           <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
           <vs-popup class="holamundo" title="What is balancing debt?" :active.sync="popupActivo">
@@ -252,6 +272,13 @@
       <div v-if="goToQuestion === 4">
         <h1>How do I invest?</h1>
         <h3>Do you have an Emergency Fund?</h3>
+        <div class="previousAnswers">
+          <h3>Your answers</h3>
+          <h6 v-if="answer1">Do you have any debt? <strong><br>Answer: {{answer1}}</strong></h6>
+          <h6 v-if="answer2">Is the interest 8% or higher? <strong><br>Answer: {{answer2}}</strong></h6>
+          <h6 v-if="answer3">Do you want help balancing<br>debt and investing? <strong><br>Answer: {{answer3}}</strong>
+          </h6>
+        </div>
         <div class="centerx">
           <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
           <vs-popup class="holamundo" title="What is Emergency Fund?" :active.sync="popupActivo">
@@ -280,6 +307,14 @@
       <div v-if="goToQuestion === 5">
         <h1>How do I invest?</h1>
         <h3>Do you want to pick your own investments?</h3>
+        <div class="previousAnswers">
+          <h3>Your answers</h3>
+          <h6 v-if="answer1">Do you have any debt? <strong><br>Answer: {{answer1}}</strong></h6>
+          <h6 v-if="answer2">Is the interest 8% or higher? <strong><br>Answer: {{answer2}}</strong></h6>
+          <h6 v-if="answer3">Do you want help balancing<br>debt and investing? <strong><br>Answer: {{answer3}}</strong>
+          </h6>
+          <h6 v-if="answer4">Do you have an Emergency Fund? <strong><br>Answer: {{answer4}}</strong></h6>
+        </div>
         <div class="centerx">
           <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
           <vs-popup class="holamundo" title="What is debt?" :active.sync="popupActivo">
@@ -307,6 +342,15 @@
       <div v-if="goToQuestion === 6">
         <h1>How do I invest?</h1>
         <h3>Do you want to use a online digital advisor?</h3>
+        <div class="previousAnswers">
+          <h3>Your answers</h3>
+          <h6 v-if="answer1">Do you have any debt? <strong><br>Answer: {{answer1}}</strong></h6>
+          <h6 v-if="answer2">Is the interest 8% or higher? <strong><br>Answer: {{answer2}}</strong></h6>
+          <h6 v-if="answer3">Do you want help balancing<br>debt and investing? <strong><br>Answer: {{answer3}}</strong>
+          </h6>
+          <h6 v-if="answer4">Do you have an Emergency Fund? <strong><br>Answer: {{answer4}}</strong></h6>
+          <h6 v-if="answer5">Do you want to pick your own investments? <strong><br>Answer: {{answer5}}</strong></h6>
+        </div>
         <div class="centerx">
           <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
           <vs-popup class="holamundo" title="What is online digital advisor?" :active.sync="popupActivo">
@@ -335,6 +379,16 @@
       <div v-if="goToQuestion === 7">
         <h1>How do I invest?</h1>
         <h3>Do you want a professional investment manager?</h3>
+        <div class="previousAnswers">
+          <h3>Your answers</h3>
+          <h6 v-if="answer1">Do you have any debt? <strong><br>Answer: {{answer1}}</strong></h6>
+          <h6 v-if="answer2">Is the interest 8% or higher? <strong><br>Answer: {{answer2}}</strong></h6>
+          <h6 v-if="answer3">Do you want help balancing<br>debt and investing? <strong><br>Answer: {{answer3}}</strong>
+          </h6>
+          <h6 v-if="answer4">Do you have an Emergency Fund? <strong><br>Answer: {{answer4}}</strong></h6>
+          <h6 v-if="answer5">Do you want to pick your own investments? <strong><br>Answer: {{answer5}}</strong></h6>
+          <h6 v-if="answer6">Do you want to use a online digital advisor?<strong><br>Answer: {{answer6}}</strong></h6>
+        </div>
         <div class="centerx">
           <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
           <vs-popup class="holamundo" title="What is debt?" :active.sync="popupActivo">
@@ -362,6 +416,17 @@
       <div v-if="goToQuestion === 8">
         <h1>How do I invest?</h1>
         <h3>Are you investing for retirement?</h3>
+        <div class="previousAnswers">
+          <h3>Your answers</h3>
+          <h6 v-if="answer1">Do you have any debt? <strong><br>Answer: {{answer1}}</strong></h6>
+          <h6 v-if="answer2">Is the interest 8% or higher? <strong><br>Answer: {{answer2}}</strong></h6>
+          <h6 v-if="answer3">Do you want help balancing<br>debt and investing? <strong><br>Answer: {{answer3}}</strong>
+          </h6>
+          <h6 v-if="answer4">Do you have an Emergency Fund? <strong><br>Answer: {{answer4}}</strong></h6>
+          <h6 v-if="answer5">Do you want to pick your own investments? <strong><br>Answer: {{answer5}}</strong></h6>
+          <h6 v-if="answer6">Do you want to use a online digital advisor?<strong><br>Answer: {{answer6}}</strong></h6>
+          <h6 v-if="answer7">Do you want a professional investment manager?<strong><br>Answer: {{answer7}}</strong></h6>
+        </div>
         <div class="centerx">
           <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
           <vs-popup class="holamundo" title="What is debt?" :active.sync="popupActivo">
@@ -389,6 +454,18 @@
       <div v-if="goToQuestion === 9">
         <h1>How do I invest?</h1>
         <h3>Do you know your time horizon?</h3>
+        <div class="previousAnswers">
+          <h3>Your answers</h3>
+          <h6 v-if="answer1">Do you have any debt? <strong><br>Answer: {{answer1}}</strong></h6>
+          <h6 v-if="answer2">Is the interest 8% or higher? <strong><br>Answer: {{answer2}}</strong></h6>
+          <h6 v-if="answer3">Do you want help balancing<br>debt and investing? <strong><br>Answer: {{answer3}}</strong>
+          </h6>
+          <h6 v-if="answer4">Do you have an Emergency Fund? <strong><br>Answer: {{answer4}}</strong></h6>
+          <h6 v-if="answer5">Do you want to pick your own investments? <strong><br>Answer: {{answer5}}</strong></h6>
+          <h6 v-if="answer6">Do you want to use a online digital advisor?<strong><br>Answer: {{answer6}}</strong></h6>
+          <h6 v-if="answer7">Do you want a professional investment manager?<strong><br>Answer: {{answer7}}</strong></h6>
+          <h6 v-if="answer8">Are you investing for retirement?<strong><br>Answer: {{answer8}}</strong></h6>
+        </div>
         <div class="centerx">
           <i class="fas fa-question-circle fa-2x" @click="popupActivo=true"></i>
           <vs-popup class="holamundo" title="What is debt?" :active.sync="popupActivo">
@@ -416,6 +493,19 @@
       <div v-if="goToQuestion === 10">
         <h1>How do I invest?</h1>
         <h3>Do you have funds available to start investing?</h3>
+        <div class="previousAnswers">
+          <h3>Your answers</h3>
+          <h6 v-if="answer1">Do you have any debt? <strong><br>Answer: {{answer1}}</strong></h6>
+          <h6 v-if="answer2">Is the interest 8% or higher? <strong><br>Answer: {{answer2}}</strong></h6>
+          <h6 v-if="answer3">Do you want help balancing<br>debt and investing? <strong><br>Answer: {{answer3}}</strong>
+          </h6>
+          <h6 v-if="answer4">Do you have an Emergency Fund? <strong><br>Answer: {{answer4}}</strong></h6>
+          <h6 v-if="answer5">Do you want to pick your own investments? <strong><br>Answer: {{answer5}}</strong></h6>
+          <h6 v-if="answer6">Do you want to use a online digital advisor?<strong><br>Answer: {{answer6}}</strong></h6>
+          <h6 v-if="answer7">Do you want a professional investment manager?<strong><br>Answer: {{answer7}}</strong></h6>
+          <h6 v-if="answer8">Are you investing for retirement?<strong><br>Answer: {{answer8}}</strong></h6>
+          <h6 v-if="answer9">Do you know your time horizon?<strong><br>Answer: {{answer9}}</strong></h6>
+        </div>
         <div class="centerx">
           <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
           <vs-popup class="holamundo" title="What is debt?" :active.sync="popupActivo">
@@ -443,6 +533,21 @@
       <div v-if="goToQuestion === 11">
         <h1>How do I invest?</h1>
         <h3>Do you want to use an auto-saving app?</h3>
+        <div class="previousAnswers">
+          <h3>Your answers</h3>
+          <h6 v-if="answer1">Do you have any debt? <strong><br>Answer: {{answer1}}</strong></h6>
+          <h6 v-if="answer2">Is the interest 8% or higher? <strong><br>Answer: {{answer2}}</strong></h6>
+          <h6 v-if="answer3">Do you want help balancing<br>debt and investing? <strong><br>Answer: {{answer3}}</strong>
+          </h6>
+          <h6 v-if="answer4">Do you have an Emergency Fund? <strong><br>Answer: {{answer4}}</strong></h6>
+          <h6 v-if="answer5">Do you want to pick your own investments? <strong><br>Answer: {{answer5}}</strong></h6>
+          <h6 v-if="answer6">Do you want to use a online digital advisor?<strong><br>Answer: {{answer6}}</strong></h6>
+          <h6 v-if="answer7">Do you want a professional investment manager?<strong><br>Answer: {{answer7}}</strong></h6>
+          <h6 v-if="answer8">Are you investing for retirement?<strong><br>Answer: {{answer8}}</strong></h6>
+          <h6 v-if="answer9">Do you know your time horizon?<strong><br>Answer: {{answer9}}</strong></h6>
+          <h6 v-if="answer10">Do you have funds available<br>to start investing?<strong><br>Answer:
+              {{answer10}}</strong></h6>
+        </div>
         <div class="centerx">
           <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
           <vs-popup class="holamundo" title="What is auto-saving app?" :active.sync="popupActivo">
@@ -471,6 +576,23 @@
       <div v-if="goToQuestion === 12">
         <h1>How do I invest?</h1>
         <h3>Do you want to invest in socially responsible<br>investments and companies?</h3>
+        <div class="previousAnswers">
+          <h3>Your answers</h3>
+          <h6 v-if="answer1">Do you have any debt? <strong><br>Answer: {{answer1}}</strong></h6>
+          <h6 v-if="answer2">Is the interest 8% or higher? <strong><br>Answer: {{answer2}}</strong></h6>
+          <h6 v-if="answer3">Do you want help balancing<br>debt and investing? <strong><br>Answer: {{answer3}}</strong>
+          </h6>
+          <h6 v-if="answer4">Do you have an Emergency Fund? <strong><br>Answer: {{answer4}}</strong></h6>
+          <h6 v-if="answer5">Do you want to pick your own investments? <strong><br>Answer: {{answer5}}</strong></h6>
+          <h6 v-if="answer6">Do you want to use a online digital advisor?<strong><br>Answer: {{answer6}}</strong></h6>
+          <h6 v-if="answer7">Do you want a professional investment manager?<strong><br>Answer: {{answer7}}</strong></h6>
+          <h6 v-if="answer8">Are you investing for retirement?<strong><br>Answer: {{answer8}}</strong></h6>
+          <h6 v-if="answer9">Do you know your time horizon?<strong><br>Answer: {{answer9}}</strong></h6>
+          <h6 v-if="answer10">Do you have funds available<br>to start investing?<strong><br>Answer:
+              {{answer10}}</strong></h6>
+          <h6 v-if="answer11">Do you want to invest in <br>socially responsible<br>investments and
+            companies?<strong><br>Answer: {{answer11}}</strong></h6>
+        </div>
         <div class="centerx">
           <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
           <vs-popup class="holamundo" title="What is socially responsible?" :active.sync="popupActivo">
