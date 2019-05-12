@@ -16,6 +16,8 @@
   <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
   <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
   <script src="https://cdn.rawgit.com/officert/vue-slideout-panel/a07d8e2e/dist/vue2-slideout-panel.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <style>
     .questionView,
     .btn-group-toggle.btn-group,
@@ -106,6 +108,10 @@
       right: 150px;
     }
 
+    .panelContainer .fa-book-reader {
+      cursor: pointer;
+    }
+
     @keyframes clipMe {
 
       0%,
@@ -149,10 +155,9 @@
       <div v-if="goToQuestion === 1">
         <h1>How do I invest?</h1>
         <h3>Do you have any debt?</h3>
+
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
@@ -170,9 +175,7 @@
         <h1>How do I invest?</h1>
         <h3>Is the interest 8% or higher?</h3>
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
@@ -190,9 +193,7 @@
         <h1>How do I invest?</h1>
         <h3>Do you want help balancing debt and investing?</h3>
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
@@ -210,9 +211,7 @@
         <h1>How do I invest?</h1>
         <h3>Do you have an Emergency Fund?</h3>
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
@@ -230,9 +229,7 @@
         <h1>How do I invest?</h1>
         <h3>Do you want to pick your own investments?</h3>
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
@@ -250,9 +247,7 @@
         <h1>How do I invest?</h1>
         <h3>Do you want to use a online digital advisor?</h3>
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
@@ -270,9 +265,7 @@
         <h1>How do I invest?</h1>
         <h3>Do you want a professional investment manager?</h3>
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
@@ -290,9 +283,7 @@
         <h1>How do I invest?</h1>
         <h3>Are you investing for retirement?</h3>
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
@@ -310,9 +301,7 @@
         <h1>How do I invest?</h1>
         <h3>Do you know your time horizon?</h3>
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
@@ -330,9 +319,7 @@
         <h1>How do I invest?</h1>
         <h3>Do you have funds available to start investing?</h3>
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
@@ -350,9 +337,7 @@
         <h1>How do I invest?</h1>
         <h3>Do you want to use an auto-saving app?</h3>
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
@@ -370,9 +355,7 @@
         <h1>How do I invest?</h1>
         <h3>Do you want to invest in socially responsible investments and companies?</h3>
         <div class="panelContainer">
-          <b-button variant="info" v-on:click="showPanel()">
-            Show Information
-          </b-button>
+          <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
         <b-form-radio-group label="Your answer" required buttons>
