@@ -11,13 +11,15 @@
   <title>app</title>
   <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
   <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/vuesax/dist/vuesax.css" rel="stylesheet">
 
   <script src="//unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js"></script>
   <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
   <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
   <script src="https://cdn.rawgit.com/officert/vue-slideout-panel/a07d8e2e/dist/vue2-slideout-panel.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/vuesax/dist/vuesax.umd.js"></script>
   <style>
     .questionView,
     .btn-group-toggle.btn-group,
@@ -31,8 +33,12 @@
     h2,
     h3,
     p {
-      color: black;
+      color: #424242;
       text-align: center;
+    }
+
+    i {
+      color: #C8E6C9;
     }
 
     .buttonContainer {
@@ -108,8 +114,16 @@
       right: 150px;
     }
 
-    .panelContainer .fa-book-reader {
+    label,
+    .fa-book-reader,
+    .fa-question-circle {
       cursor: pointer;
+    }
+
+    .centerx {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
     }
 
     @keyframes clipMe {
@@ -155,7 +169,15 @@
       <div v-if="goToQuestion === 1">
         <h1>How do I invest?</h1>
         <h3>Do you have any debt?</h3>
-
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
+          <vs-popup class="holamundo" title="What is debt?" :active.sync="popupActivo">
+            <p>
+              Debt is... description goes here... description goes here... description goes here... description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
         <div class="panelContainer">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
@@ -174,6 +196,15 @@
       <div v-if="goToQuestion === 2">
         <h1>How do I invest?</h1>
         <h3>Is the interest 8% or higher?</h3>
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
+          <vs-popup class="holamundo" title="What is interest?" :active.sync="popupActivo">
+            <p>
+              Interest is... description goes here... description goes here... description goes here... description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
         <div class="panelContainer">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
@@ -192,6 +223,16 @@
       <div v-if="goToQuestion === 3">
         <h1>How do I invest?</h1>
         <h3>Do you want help balancing debt and investing?</h3>
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
+          <vs-popup class="holamundo" title="What is balancing debt?" :active.sync="popupActivo">
+            <p>
+              Balancing debt is... description goes here... description goes here... description goes here...
+              description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
         <div class="panelContainer">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
@@ -210,6 +251,16 @@
       <div v-if="goToQuestion === 4">
         <h1>How do I invest?</h1>
         <h3>Do you have an Emergency Fund?</h3>
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
+          <vs-popup class="holamundo" title="What is Emergency Fund?" :active.sync="popupActivo">
+            <p>
+              Emergency Fund is... description goes here... description goes here... description goes here...
+              description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
         <div class="panelContainer">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
@@ -228,6 +279,15 @@
       <div v-if="goToQuestion === 5">
         <h1>How do I invest?</h1>
         <h3>Do you want to pick your own investments?</h3>
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
+          <vs-popup class="holamundo" title="What is debt?" :active.sync="popupActivo">
+            <p>
+              Debt is... description goes here... description goes here... description goes here... description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
         <div class="panelContainer">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
@@ -246,6 +306,16 @@
       <div v-if="goToQuestion === 6">
         <h1>How do I invest?</h1>
         <h3>Do you want to use a online digital advisor?</h3>
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
+          <vs-popup class="holamundo" title="What is online digital advisor?" :active.sync="popupActivo">
+            <p>
+              Online digital advisor is... description goes here... description goes here... description goes here...
+              description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
         <div class="panelContainer">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
@@ -264,6 +334,15 @@
       <div v-if="goToQuestion === 7">
         <h1>How do I invest?</h1>
         <h3>Do you want a professional investment manager?</h3>
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
+          <vs-popup class="holamundo" title="What is debt?" :active.sync="popupActivo">
+            <p>
+              Debt is... description goes here... description goes here... description goes here... description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
         <div class="panelContainer">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
@@ -282,6 +361,15 @@
       <div v-if="goToQuestion === 8">
         <h1>How do I invest?</h1>
         <h3>Are you investing for retirement?</h3>
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
+          <vs-popup class="holamundo" title="What is debt?" :active.sync="popupActivo">
+            <p>
+              Debt is... description goes here... description goes here... description goes here... description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
         <div class="panelContainer">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
@@ -300,7 +388,16 @@
       <div v-if="goToQuestion === 9">
         <h1>How do I invest?</h1>
         <h3>Do you know your time horizon?</h3>
-        <div class="panelContainer">
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true"></i>
+          <vs-popup class="holamundo" title="What is debt?" :active.sync="popupActivo">
+            <p>
+              Debt is... description goes here... description goes here... description goes here... description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
+        <div class="panelContainer" v-b-tooltip.hover.bottom title="Hint">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
@@ -318,6 +415,15 @@
       <div v-if="goToQuestion === 10">
         <h1>How do I invest?</h1>
         <h3>Do you have funds available to start investing?</h3>
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
+          <vs-popup class="holamundo" title="What is debt?" :active.sync="popupActivo">
+            <p>
+              Debt is... description goes here... description goes here... description goes here... description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
         <div class="panelContainer">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
@@ -336,6 +442,16 @@
       <div v-if="goToQuestion === 11">
         <h1>How do I invest?</h1>
         <h3>Do you want to use an auto-saving app?</h3>
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
+          <vs-popup class="holamundo" title="What is auto-saving app?" :active.sync="popupActivo">
+            <p>
+              Auto-saving app is... description goes here... description goes here... description goes here...
+              description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
         <div class="panelContainer">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
@@ -353,7 +469,17 @@
       </div>
       <div v-if="goToQuestion === 12">
         <h1>How do I invest?</h1>
-        <h3>Do you want to invest in socially responsible investments and companies?</h3>
+        <h3>Do you want to invest in socially responsible<br>investments and companies?</h3>
+        <div class="centerx">
+          <i class="fas fa-question-circle fa-2x" @click="popupActivo=true" v-b-tooltip.hover.bottom title="Hint"></i>
+          <vs-popup class="holamundo" title="What is socially responsible?" :active.sync="popupActivo">
+            <p>
+              Socially responsible is... description goes here... description goes here... description goes here...
+              description goes
+              here...
+            </p>
+          </vs-popup>
+        </div>
         <div class="panelContainer">
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
@@ -428,7 +554,8 @@
           panel1Form: {
             openOn: "right",
             width: "500px" // TODO: try somehow to make it 50%, issue #37.
-          }
+          },
+          popupActivo: false
         }
       },
       methods: {
