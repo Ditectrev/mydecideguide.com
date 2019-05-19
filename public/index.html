@@ -194,15 +194,9 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer1" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer1" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer1" class="buttonContainer">
-          <b-button variant="dark" v-on:click="nextQuestion1(); handleAnswer1();">Next
-          </b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-model="answer1" v-on:click="answer1 = 'Yes'; nextQuestion1(answer1);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-model="answer1" v-on:click="answer1 = 'No'; nextQuestion1(answer1);" value="No">No</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 2">
@@ -225,15 +219,10 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer2" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer2" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer2" class="buttonContainer">
-          <b-button variant="dark" @click="previousQuestion2">Previous</b-button>
-          <b-button variant="dark" @click="nextQuestion2(); handleAnswer2();">Next</b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-on:click="answer2 = 'Yes'; nextQuestion2(answer2);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-on:click="answer2 = 'No'; nextQuestion2(answer2);" value="No">No</b-button>
+          <b-button variant="dark" @click="previousQuestion2(); answer2='';">Previous</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 3">
@@ -258,15 +247,10 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer3" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer3" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer3" class="buttonContainer">
-          <b-button variant="dark" @click="previousQuestion3">Previous</b-button>
-          <b-button variant="dark" @click="nextQuestion3(); handleAnswer3();">Next</b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-on:click="answer3 = 'Yes'; nextQuestion3(answer3);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-on:click="answer3 = 'No'; nextQuestion3(answer3);" value="No">No</b-button>
+          <b-button variant="dark" @click="previousQuestion3(); answer3='';">Previous</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 4">
@@ -293,15 +277,10 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer4" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer4" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer4" class="buttonContainer">
-          <b-button variant="dark" @click="previousQuestion4">Previous</b-button>
-          <b-button variant="dark" @click="nextQuestion4(); handleAnswer4();">Next</b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-on:click="answer4 = 'Yes'; nextQuestion4(answer4);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-on:click="answer4 = 'No'; nextQuestion4(answer4);" value="No">No</b-button>
+          <b-button variant="dark" @click="previousQuestion4(); answer4='';">Previous</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 5">
@@ -328,15 +307,10 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer5" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer5" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer5" class="buttonContainer">
-          <b-button variant="dark" @click="previousQuestion5">Previous</b-button>
-          <b-button variant="dark" @click="nextQuestion5(); handleAnswer5();">Next</b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-on:click="answer5 = 'Yes'; nextQuestion5(answer5);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-on:click="answer5 = 'No'; nextQuestion5(answer5);" value="No">No</b-button>
+          <b-button variant="dark" @click="previousQuestion5(); answer5='';">Previous</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 6">
@@ -365,15 +339,10 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer6" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer6" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer6" class="buttonContainer">
-          <b-button variant="dark" @click="previousQuestion6">Previous</b-button>
-          <b-button variant="dark" @click="nextQuestion6(); handleAnswer6();">Next</b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-on:click="answer6 = 'Yes'; nextQuestion6(answer6);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-on:click="answer6 = 'No'; nextQuestion6(answer6);" value="No">No</b-button>
+          <b-button variant="dark" @click="previousQuestion6(); answer6='';">Previous</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 7">
@@ -402,15 +371,10 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer7" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer7" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer7" class="buttonContainer">
-          <b-button variant="dark" @click="previousQuestion7">Previous</b-button>
-          <b-button variant="dark" @click="nextQuestion7(); handleAnswer7();">Next</b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-on:click="answer7 = 'Yes'; nextQuestion7(answer7);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-on:click="answer7 = 'No'; nextQuestion7(answer7);" value="No">No</b-button>
+          <b-button variant="dark" @click="previousQuestion7(); answer7='';">Previous</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 8">
@@ -440,15 +404,10 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer8" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer8" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer8" class="buttonContainer">
-          <b-button variant="dark" @click="previousQuestion8">Previous</b-button>
-          <b-button variant="dark" @click="nextQuestion8(); handleAnswer8();">Next</b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-on:click="answer8 = 'Yes'; nextQuestion8(answer8);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-on:click="answer8 = 'No'; nextQuestion8(answer8);" value="No">No</b-button>
+          <b-button variant="dark" @click="previousQuestion8(); answer8='';">Previous</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 9">
@@ -479,15 +438,10 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer9" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer9" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer9" class="buttonContainer">
-          <b-button variant="dark" @click="previousQuestion9">Previous</b-button>
-          <b-button variant="dark" @click="nextQuestion9(); handleAnswer9();">Next</b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-on:click="answer9 = 'Yes'; nextQuestion9(answer9);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-on:click="answer9 = 'No'; nextQuestion9(answer9);" value="No">No</b-button>
+          <b-button variant="dark" @click="previousQuestion9(); answer9='';">Previous</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 10">
@@ -519,15 +473,10 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer10" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer10" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer10" class="buttonContainer">
-          <b-button variant="dark" @click="previousQuestion10">Previous</b-button>
-          <b-button variant="dark" @click="nextQuestion10(); handleAnswer10();">Next</b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-on:click="answer10 = 'Yes'; nextQuestion10(answer10);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-on:click="answer10 = 'No'; nextQuestion10(answer10);" value="No">No</b-button>
+          <b-button variant="dark" @click="previousQuestion10(); answer10='';">Previous</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 11">
@@ -562,15 +511,10 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer11" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer11" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer11" class="buttonContainer">
-          <b-button variant="dark" @click="previousQuestion11">Previous</b-button>
-          <b-button variant="dark" @click="nextQuestion11(); handleAnswer11();">Next</b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-on:click="answer11 = 'Yes'; nextQuestion11(answer11);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-on:click="answer11 = 'No'; nextQuestion11(answer11);" value="No">No</b-button>
+          <b-button variant="dark" @click="previousQuestion11(); answer11='';">Previous</b-button>
         </div>
       </div>
       <div v-if="goToQuestion === 12">
@@ -606,15 +550,10 @@
           <i class="fas fa-book-reader fa-4x" v-on:click="showPanel()" v-b-tooltip.hover.bottom title="Read more"></i>
         </div>
         <slideout-panel></slideout-panel>
-        <b-form-radio-group label="Your answer" required buttons>
-          <b-form-radio button-variant="outline-primary" v-model="answer12" name="checkboxQuestion" value="Yes"
-            id="trueAnswer">Yes</b-form-radio>
-          <b-form-radio button-variant="outline-primary" v-model="answer12" name="checkboxQuestion" value="No"
-            id="falseAnswer">No</b-form-radio>
-        </b-form-radio-group>
-        <div v-if="answer12" class="buttonContainer">
-          <b-button variant="dark" @click="previousQuestion12">Previous</b-button>
-          <b-button variant="dark" @click="handleResults();">Submit</b-button>
+        <div class="buttonContainer">
+          <b-button variant="primary" v-on:click="answer12 = 'Yes'; handleResults(answer12);" value="Yes">Yes</b-button>
+          <b-button variant="primary" v-on:click="answer12 = 'No'; handleResults(answer12);" value="No">No</b-button>
+          <b-button variant="dark" @click="previousQuestion12(); answer12='';">Previous</b-button>
         </div>
       </div>
     </div>
@@ -686,24 +625,30 @@
           this.questionView = true;
           this.goToQuestion = 1;
         },
-        nextQuestion1: function () {
-          if (this.answer1 === 'Yes') {
+        nextQuestion1: function (answer) {
+          this.answers[0] = answer;
+          console.log('answer event: ', answer);
+          if (answer === 'Yes') {
             this.goToQuestion = 2;
           } else {
             this.goToQuestion = 4;
           }
         },
         previousQuestion2: function () {
+          this.answers[1] = null;
           this.goToQuestion = 1;
         },
-        nextQuestion2: function () {
-          if (this.answer2 === 'Yes') {
+        nextQuestion2: function (answer) {
+          this.answers[1] = answer;
+          console.log('answer event: ', answer);
+          if (answer === 'Yes') {
             this.goToQuestion = 3;
           } else {
             this.goToQuestion = 4;
           }
         },
         previousQuestion3: function () {
+          this.answers[2] = null;
           if (this.answer1 === 'No') {
             this.answer2 = '';
             this.goToQuestion = 1;
@@ -711,10 +656,13 @@
             this.goToQuestion = 2;
           }
         },
-        nextQuestion3: function () {
+        nextQuestion3: function (answer) {
+          this.answers[2] = answer;
+          console.log('answer event: ', answer);
           this.goToQuestion = 4;
         },
         previousQuestion4: function () {
+          this.answers[3] = null;
           if (this.answer1 === 'No') {
             this.answer2 = '';
             this.answer3 = '';
@@ -726,40 +674,52 @@
             this.goToQuestion = 3;
           }
         },
-        nextQuestion4: function () {
+        nextQuestion4: function (answer) {
+          this.answers[3] = answer;
+          console.log('answer event: ', answer);
           this.goToQuestion = 5;
         },
         previousQuestion5: function () {
+          this.answers[4] = null;
           this.goToQuestion = 4;
         },
-        nextQuestion5: function () {
-          if (this.answer5 === 'Yes') {
+        nextQuestion5: function (answer) {
+          this.answers[4] = answer;
+          console.log('answer event: ', answer);
+          if (answer === 'Yes') {
             this.goToQuestion = 9;
           } else {
             this.goToQuestion = 6;
           }
         },
         previousQuestion6: function () {
+          this.answers[5] = null;
           this.goToQuestion = 5;
         },
-        nextQuestion6: function () {
-          if (this.answer6 === 'Yes') {
+        nextQuestion6: function (answer) {
+          this.answers[5] = answer;
+          console.log('answer event: ', answer);
+          if (answer === 'Yes') {
             this.goToQuestion = 8;
           } else {
             this.goToQuestion = 7;
           }
         },
         previousQuestion7: function () {
+          this.answers[6] = null;
           this.goToQuestion = 6;
         },
-        nextQuestion7: function () {
-          if (this.answer7 === 'Yes') {
+        nextQuestion7: function (answer) {
+          this.answers[6] = answer;
+          console.log('answer event: ', answer);
+          if (answer === 'Yes') {
             this.goToQuestion = 8;
           } else {
             this.goToQuestion = 4;
           }
         },
         previousQuestion8: function () {
+          this.answers[7] = null;
           if (this.answer6 === 'Yes') {
             this.answer7 = '';
             this.goToQuestion = 6;
@@ -767,14 +727,17 @@
             this.goToQuestion = 7;
           }
         },
-        nextQuestion8: function () {
-          if (this.answer8 === 'Yes') {
+        nextQuestion8: function (answer) {
+          this.answers[7] = answer;
+          console.log('answer event: ', answer);
+          if (answer === 'Yes') {
             this.goToQuestion = 10;
           } else {
             this.goToQuestion = 9;
           }
         },
         previousQuestion9: function () {
+          this.answers[8] = null;
           if (this.answer5 === 'Yes') {
             this.answer6 = '';
             this.answer7 = '';
@@ -784,10 +747,13 @@
             this.goToQuestion = 8;
           }
         },
-        nextQuestion9: function () {
+        nextQuestion9: function (answer) {
+          this.answers[8] = answer;
+          console.log('answer event: ', answer);
           this.goToQuestion = 10;
         },
         previousQuestion10: function () {
+          this.answers[9] = null;
           if (this.answer8 === 'Yes') {
             this.answer9 = '';
             this.goToQuestion = 8;
@@ -795,20 +761,26 @@
             this.goToQuestion = 9;
           }
         },
-        nextQuestion10: function () {
-          if (this.answer10 === 'Yes') {
+        nextQuestion10: function (answer) {
+          this.answers[9] = answer;
+          console.log('answer event: ', answer);
+          if (answer === 'Yes') {
             this.goToQuestion = 12;
           } else {
             this.goToQuestion = 11;
           }
         },
         previousQuestion11: function () {
+          this.answers[10] = null;
           this.goToQuestion = 10;
         },
-        nextQuestion11: function () {
+        nextQuestion11: function (answer) {
+          this.answers[10] = answer;
+          console.log('answer event: ', answer);
           this.goToQuestion = 12;
         },
         previousQuestion12: function () {
+          this.answers[11] = null;
           if (this.answer10 === 'Yes') {
             this.answer11 = '';
             this.goToQuestion = 10;
@@ -816,56 +788,12 @@
             this.goToQuestion = 11;
           }
         },
-        handleAnswer1: function () {
-          this.answers[0] = this.answer1;
-          console.log('answer event: ', this.answer1);
-        },
-        handleAnswer2: function () {
-          this.answers[1] = this.answer2;
-          console.log('answer event: ', this.answer2);
-        },
-        handleAnswer3: function () {
-          this.answers[2] = this.answer3;
-          console.log('answer event: ', this.answer3);
-        },
-        handleAnswer4: function () {
-          this.answers[3] = this.answer4;
-          console.log('answer event: ', this.answer4);
-        },
-        handleAnswer5: function () {
-          this.answers[4] = this.answer5;
-          console.log('answer event: ', this.answer5);
-        },
-        handleAnswer6: function () {
-          this.answers[5] = this.answer6;
-          console.log('answer event: ', this.answer6);
-        },
-        handleAnswer7: function () {
-          this.answers[6] = this.answer7;
-          console.log('answer event: ', this.answer7);
-        },
-        handleAnswer8: function () {
-          this.answers[7] = this.answer8;
-          console.log('answer event: ', this.answer8);
-        },
-        handleAnswer9: function () {
-          this.answers[8] = this.answer9;
-          console.log('answer event: ', this.answer9);
-        },
-        handleAnswer10: function () {
-          this.answers[9] = this.answer10;
-          console.log('answer event: ', this.answer10);
-        },
-        handleAnswer11: function () {
-          this.answers[10] = this.answer11;
-          console.log('answer event: ', this.answer11);
-        },
-        handleResults: function () {
+        handleResults: function (answer) {
           this.questionView = false;
           this.finalView = true;
           // this.question = 12;
-          this.answers[11] = this.answer12;
-          console.log('answer event: ', this.answer12);
+          this.answers[11] = answer;
+          console.log('answer event: ', answer);
           console.log('handle results, maybe just print the data, then send it');
           // alert(this.answers[0]);
           // alert(this.answers[1]);
